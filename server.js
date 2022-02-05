@@ -1,12 +1,15 @@
 const express = require('express');
 const path = require('path');
 const routes = require('./routes');
-
 const PORT = process.env.port || 3001;
 const app = express();
+const fs = require('fs');
+
+
+var savedNotes = require('./db/db.json')
+
 
 app.use(express.static('public'));
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
