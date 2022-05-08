@@ -7,9 +7,9 @@ const PORT = process.env.PORT || 3001;
 const { v4: uuid4 } = require('uuid');
 
 //Global variable
-var savedNotes = require('./Main/db.json');
+var savedNotes = require('./db/db.json');
 
-//Express usage
+//Express usag
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
