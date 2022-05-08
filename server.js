@@ -30,7 +30,7 @@ res.sendFile(path.join(__dirname, '/public/notes.html'));
 
 //Gets notes from JSON file
 app.get('/api/notes', (req, res) => {
-    res.sendFile(path.join(__dirname, 'Main/db.json'));
+    res.sendFile(path.join(__dirname, './db/db.json'));
     console.log(`${req.method} request received to get notes`);
 });
 
@@ -56,7 +56,7 @@ app.post('/api/notes', (req, res) => {
         //Adds new note to array
         savedNotes.push(newNote);
         //Writes new note to file
-        fs.writeFile('Main/db.json', JSON.stringify(savedNotes), function(err) {
+        fs.writeFile('./db/db.json', JSON.stringify(savedNotes), function(err) {
             if (err) throw err;
         });
         //Response data console logged (ERR / NO ERR)
@@ -77,7 +77,7 @@ app.delete('/api/notes/:id', function (req, res) {
     if (id) {
         savedNotes = savedNotes.filter(item => item.id !== id)
 
-        fs.writeFile('Main/db.json', JSON.stringify(savedNotes), function(err) {
+        fs.writeFile('./db/db.json', JSON.stringify(savedNotes), function(err) {
             if (err) throw err;
             else {
                 console.log(`Note ID: ${id} deleted`);
